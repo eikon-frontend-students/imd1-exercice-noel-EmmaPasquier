@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Noël Complètement Barré</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: "Comic Sans MS", cursive;
+        background: linear-gradient(180deg, #0b3d2e, #145a32);
+        color: white;
+        overflow-x: hidden;
+      }
+
+      header {
+        text-align: center;
+        padding: 4rem 1rem;
+      }
+
+      h1 {
+        font-size: 3.5rem;
+        color: #ff2d2d;
+        text-shadow: 3px 3px gold;
+        animation: shake 1s infinite;
+      }
+
+      @keyframes shake {
+        0% {
+          transform: rotate(0deg);
+        }
+        25% {
+          transform: rotate(1deg);
+        }
+        50% {
+          transform: rotate(0deg);
+        }
+        75% {
+          transform: rotate(-1deg);
+        }
+        100% {
+          transform: rotate(0deg);
+        }
+      }
+
+      .buttons {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+        margin-bottom: 3rem;
+      }
+
+      button {
+        padding: 1rem 2rem;
+        font-size: 1.2rem;
+        border-radius: 40px;
+        border: 4px dotted gold;
+        background: white;
+        cursor: pointer;
+        transition: transform 0.2s, background 0.2s;
+      }
+
+      button:hover {
+        transform: scale(1.2) rotate(-3deg);
+        background: #ffefc1;
+      }
+
+      .snowflake {
+        position: fixed;
+        top: -50px;
+        font-size: 2rem;
+        animation: fall linear forwards;
+        pointer-events: none;
+      }
+
+      .santa {
+        position: fixed;
+        bottom: 10px;
+        left: -300px;
+        font-size: 5rem;
+        animation: santaRun 12s linear infinite;
+      }
+
+      @keyframes santaRun {
+        from {
+          left: -300px;
+        }
+        to {
+          left: 110%;
+        }
+      }
+
+      footer {
+        text-align: center;
+        padding: 2rem;
+        background: rgba(0, 0, 0, 0.3);
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>🎄 NOËL COMPLÈTEMENT BARRÉ 🎄</h1>
+      <p>Ho ho ho… mais bizarre.</p>
+    </header>
+
+    <section class="buttons">
+      <button onclick="hohoho()">HO HO HO</button>
+      <button onclick="cadeau()">OUVRE UN CADEAU</button>
+      <button onclick="neige()">TEMPÊTE DE NEIGE</button>
+    </section>
+
+    <div class="santa">
+      <img
+        src="https://media.tenor.com/iROXvMH5lkYAAAAM/twerk-santa.gif"
+        alt="Père Noël qui twerk"
+      />
+    </div>
+
+    <footer>
+      <p>© 2025 — Père Noël sous caféine</p>
+    </footer>
+
+    <script>
+      function hohoho() {
+        alert("HO HO HOOOOO 🎅🎅🎅");
+      }
+
+      function cadeau() {
+        const surprises = [
+          "🎁 Une chaussette seule.",
+          "🧦 Encore une chaussette. Suspicious.",
+          "🪵 Du charbon premium.",
+          "🎮 Une console imaginaire.",
+          "🧠 La sagesse éternelle (ou presque).",
+        ];
+        alert(surprises[Math.floor(Math.random() * surprises.length)]);
+      }
+
+      function neige() {
+        for (let i = 0; i < 40; i++) {
+          const flocon = document.createElement("div");
+          flocon.className = "snowflake";
+          flocon.textContent = "❄️";
+          flocon.style.left = Math.random() * 100 + "vw";
+          flocon.style.animationDuration = Math.random() * 3 + 2 + "s";
+          flocon.style.fontSize = Math.random() * 20 + 15 + "px";
+          document.body.appendChild(flocon);
+
+          flocon.style.animationName = "fall";
+
+          setTimeout(() => flocon.remove(), 5000);
+        }
+      }
+
+      const style = document.createElement("style");
+      style.innerHTML = `
+      @keyframes fall {
+        to { transform: translateY(110vh) rotate(360deg); }
+      }
+    `;
+      document.head.appendChild(style);
+    </script>
+  </body>
+</html>
